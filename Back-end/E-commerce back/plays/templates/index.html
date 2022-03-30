@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Welcome back</p>
+    {% if name %}
+    <h1>Welcome {{ name }}</h1>
+    {% else %}
+    <h1>Welcome back</h1>
+    {% endif %}
 </body>
 </html>
