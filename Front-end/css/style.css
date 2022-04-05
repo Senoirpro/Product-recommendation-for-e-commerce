@@ -1,0 +1,162 @@
+* {
+  margin: auto 0;
+  padding: auto 0;
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+  background-color: rgb(207, 245, 255);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+nav {
+  flex: 1;
+  text-align: right;
+
+}
+
+nav ul {
+  display: inline-block;
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(27, 27, 27);
+}
+
+p {
+  color: rgb(27, 27, 27);
+}
+
+.all {
+  max-width: 1700px;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+}
+
+.active {
+  background-color: #e2e2e2;
+  padding: 6px;
+  color: rgb(27, 27, 27);
+
+}
+
+.product {
+  margin: 40px 0;
+}
+
+.product-container {
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.column {
+  margin-left: 20px;
+  flex-basis: 25%;
+  padding: 10px;
+  min-width: 150px;
+  margin-bottom: 30px;
+  transition: all 0.5s;
+  width: 40%;
+  height: 40%;
+box-shadow: 0 4px 4px 0 rgba(124, 124, 124, 0.2);
+
+}
+
+.row :hover {
+  transform: scale(1.05);
+  background-color: rgb(255, 255, 255);
+}
+
+
+
+
+.rating {
+  color: rgb(255, 208, 0);
+}
+
+.details {
+  text-align: center;
+}
+
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+ 
+}
+
+.contact-form {
+  text-align: center;
+  width: 320px;
+  height: 420px;
+  background-color: rgb(230, 251, 255);
+  top: 50%;
+  left: 70%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 70px;
+  
+}
+
+.contact-form input,
+textarea {
+  border: none;
+  background-color: rgb(255, 255, 255);
+}
+
+.contact-form button[type="submit"] {
+  height: 30px;
+  background-color: rgb(255, 255, 255);
+  font-size: 16px;
+  border-radius: 20px;
+}
+.column .img-box {
+  padding:10px;
+  text-align: center;
+  transform: scale(1.00);
+}
+.column .img-box img{
+  padding: 10px;
+ height: 300px;
+ width: 250px;
+ object-fit: cover;
+}
+.column .cart img{
+  height: 13px;
+  width: 12px;
+}
+.column .cart{
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  color: black;
+  border: 2px solid black;
+}
+
+
+
