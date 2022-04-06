@@ -19,9 +19,13 @@ from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
 
+admin.site.site_header = 'Store Admin'
+admin.site.index_title = 'Admin'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('plays/', include('plays.urls')),
+    path('store/', include('store.urls')),
     # path('__debug__/', include('debug_toolbar.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
