@@ -1,7 +1,9 @@
 from genericpath import exists
+from multiprocessing.sharedctypes import Value
 from django.shortcuts import render
-from django.db.models import Q, F
-from django.db.models.aggregates import Count, Max, Min
+from django.db.models import Q, F, Func, Count
+from django.db.models.functions import Concat
+
 
 # from django.core.exceptions import ObjectDoesNotExist
 from store.models import Customer, Product
@@ -9,7 +11,7 @@ from store.models import Order
 
 
 def say_hello(request):
-    # return HttpResponse('Hello', )
+    #  return HttpResponse('Hello')
     # print(debug_toolbar.VERSION)    
     query_set = Product.objects.all()
    
@@ -32,11 +34,19 @@ def say_hello(request):
     # query_set = Product.objects.filter(Q(inventory__lt=10) | Q(unit_price__lt=20))
    
     # query_set = Product.objects.filter(inventory=F('unit_price'))
-    from django.db.models.aggregates import Count, Max, Min
+    # from django.db.models.aggregates import Count, Max, Min
 
-    result = Product.objects.aggregate(Count('id'))
+    # query_set = Customer.objects.annotate(
+    #     # CONCAT
+    #     full_name=Func(F('first_name'), Value(' '), 
+    #                     F('last_name'), function='CONCAT')
 
-    return render(request, 'index.html',  {'name':'', 'result':result})
+    # )
+    query_set = Product.objects.annotate(
+       discount_price=F('unit_price') * 0.8
+
+    )
+    return render(request, 'index.html',  {'name':''})
 
 
 
