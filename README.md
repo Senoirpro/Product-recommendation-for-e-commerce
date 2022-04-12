@@ -10,3 +10,11 @@
 >
 > Keras [(documentation)](https://keras.io/)
 > is an open-source software library that provides a Python interface for artificial neural networks. Keras acts as an interface for the TensorFlow library. Up until version 2.3, Keras supported multiple backends, including TensorFlow, Microsoft Cognitive Toolkit, Theano, and PlaidML.
+
+### All task
+
+- [ ] Frontend 
+- [x] Backend 
+- [ ] Machine learning 
+- [ ] Build rest api
+-
