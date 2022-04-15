@@ -16,14 +16,14 @@
 - [ ] Frontend 
 - [x] Backend 
 - [ ] Machine learning 
->      1 - Import the data
->      2 - Clean the data - Preprocessing
+>     [x] 1 - Import the data
+>     [x] 2 - Clean the data - Preprocessing
 >            - Use the preprocessing steps used in the kaggle notebooks
 >            - Visualizations and explanations are show which features are important		
->      3 - Split data. Training Set/Test Set
->      4 - Create a Model 
->      5 - Check the output
->      6 - Improve
+>     [x] 3 - Split data. Training Set/Test Set
+>     [ ] 4 - Create a Model 
+>     [ ] 5 - Check the output
+>     [ ] 6 - Improve
       
 - [ ] Build rest api
--
+
