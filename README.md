@@ -3,6 +3,10 @@
       - React
 ## Backend 
       - Django
+      - Building rest-api
+            Resource
+            Representation
+            Http methods
 ## Machine Learning
 > Deeplearning with tensorflow or Keras
 >
