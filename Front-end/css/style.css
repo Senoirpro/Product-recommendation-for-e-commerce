@@ -195,7 +195,15 @@ h4.zero:before{
 	color: #b6b6b6;
 	background-color: #ffffff;
 }
-
+.aboutpage{
+  background-color:rgb(243, 253, 255) ;
+ text-align: center;
+}
+.aboutpage img{
+ 
+  height: 200px;
+  width: 250px;
+}
 
 
 @keyframes first{
