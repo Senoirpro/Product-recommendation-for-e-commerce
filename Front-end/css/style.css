@@ -78,7 +78,7 @@ p {
 box-shadow: 0 4px 4px 0 rgba(124, 124, 124, 0.2);
 }
 .row :hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   background-color: rgb(234, 248, 255);
 
 }
@@ -110,13 +110,38 @@ box-shadow: 0 4px 4px 0 rgba(124, 124, 124, 0.2);
 }
 .contact-form input, textarea {
   border: solid #8db3b3;
+
   background-color: rgb(255, 255, 255);
 }
+
 .contact-form button[type="submit"] {
   
  align-items: center;
   background-color: rgb(140, 140, 140);
  
+}
+h4{
+  width: 3%;
+    position: inherit;
+    top: 60px;
+    left: 90%;
+    cursor: pointer;
+}
+h4:before{
+  content: attr(data-count);
+    color: white;
+    position: absolute;
+    right: 1px;
+    font-size: 15px;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 50%;
+    opacity: 0;
+}
+h4.zero:before{
+  opacity: 1;
 }
 .column .img-box {
   padding:10px;
@@ -169,4 +194,89 @@ box-shadow: 0 4px 4px 0 rgba(124, 124, 124, 0.2);
 .footer-col .social-links a:hover{
 	color: #b6b6b6;
 	background-color: #ffffff;
+}
+
+
+
+@keyframes first{
+  to{
+    width: 30px;
+      height: 20px;
+      left: 1290px;
+      top: -70px;
+  }
+}
+@keyframes second{
+  to{
+    width: 30px;
+      height: 20px;
+      left: 948px;
+      top: -70px;
+  }
+}
+@keyframes third{
+  to{
+    width: 30px;
+      height: 20px;
+      left: 606px;
+      top: -70px;
+  }
+}
+@keyframes four{
+  to{
+    width: 30px;
+      height: 20px;
+      left: 265px;
+      top: -70px;
+  }
+}
+
+
+
+.select{
+  width: 60%;
+  height: 580px;
+  padding: 5%;
+  background: rgba(48, 77, 101, 0.9);
+  position: absolute;
+  top: -1000px;
+  left: 20%;
+  transition: 0.5s;
+  overflow-y: auto;
+  margin: auto;
+}
+.select.display{
+  top: 10px;
+}
+.select div{
+  width: 100%;
+  height: 200px;
+  display: flex;
+  padding: 5px;
+  border: 5px solid rgb(90, 118, 142);
+  position: relative;
+  margin: 5px auto;
+}
+.select div img{
+  width: 200px;
+  height: 100%;
+}
+.select div h5{
+  padding: 35px;
+  color: rgb(255, 255, 255);
+}
+.select div h3{
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  color: rgb(255, 255, 255);
+}
+.select div button{
+  left: 60%;
+  top: 70%;
+  position: absolute;
+  color: rgb(0, 0, 0);
+}
+.select div span{
+  display: none;
 }
