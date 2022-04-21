@@ -3,6 +3,14 @@
       - React
 ## Backend 
       - Django
+      - Building rest-api
+           Basics of restful apis
+                  Resource
+                  Representation
+                  Http methods
+           Write views
+           Serialize and Deserialize objects
+           
 ## Machine Learning
 > Deeplearning with tensorflow or Keras
 >
