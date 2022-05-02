@@ -33,5 +33,9 @@
 >     5 - Check the output
 >     6 - Improve
       
-- [ ] Build rest api
+- [X] Build rest api
+      writing views
+      adding serialization
+      deserialization
+      
 
