@@ -34,8 +34,8 @@
 >     6 - Improve
       
 - [X] Build rest api
-      writing views
-      adding serialization
-      deserialization
+     - writing views
+     - adding serialization
+     - deserialization
       
 
