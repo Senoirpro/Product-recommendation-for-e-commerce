@@ -37,6 +37,7 @@
      - writing views
      - adding serialization
      - deserialization
-     - routers
+     - routers: searching, ordering and pagination
+	
       
 
