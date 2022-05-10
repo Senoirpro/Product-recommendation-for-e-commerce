@@ -32,7 +32,11 @@
 >     4 - Create a Model 
 >     5 - Check the output
 >     6 - Improve
-      
+      algorithm selection
+      - content based
+      - rnn
+      - cnn
+      - decision tree
 - [X] Build rest api
      - writing views
      - adding serialization
