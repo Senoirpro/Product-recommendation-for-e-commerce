@@ -26,12 +26,22 @@
 - [ ] Machine learning 
 >     1 - Import the data
 >     2 - Clean the data - Preprocessing
->            - Use the preprocessing steps used in the kaggle notebooks
+>            - Used the preprocessing steps
 >            - Visualizations and explanations are show which features are important		
 >     3 - Split data. Training Set/Test Set
 >     4 - Create a Model 
 >     5 - Check the output
 >     6 - Improve
+      algorithm selection
+      - content based
+      - rnn
+      - cnn
+      - decision tree
+- [X] Build rest api
+     - writing views
+     - adding serialization
+     - deserialization
+     - routers: searching, ordering and pagination
+	
       
-- [ ] Build rest api
 
