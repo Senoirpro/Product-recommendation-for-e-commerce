@@ -1011,7 +1011,7 @@ values  (1, 'Bread Ww Cluster', 'mus vivamus vestibulum sagittis sapien cum soci
         (999, 'Chicken - Wieners', 'eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare', 58.57, 5, '2020-08-16 00:00:00', 6, '-'),
         (1000, 'Dried Peach', 'in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin', 41.22, 39, '2020-12-12 00:00:00', 4, '-');
 
-insert into store_customer (id, first_name, last_name, email, phone, birth_date, membership)
+insert into store_customer (id, phone, birth_date, membership)
 values  (1, 'Faydra', 'Corhard', 'fcorhard0@dot.gov', '897-661-9039', '2020-10-28', 'G'),
         (2, 'Mara', 'Cammack', 'mcammack1@bigcartel.com', '649-120-2330', '2020-07-16', 'G'),
         (3, 'Shoshanna', 'Cleatherow', 'scleatherow2@vk.com', '434-940-7359', '2021-04-28', 'S'),

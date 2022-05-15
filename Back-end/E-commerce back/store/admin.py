@@ -1,7 +1,8 @@
-from django.db.models.aggregates import Count
 from django.contrib import admin, messages
-from django.urls import reverse
+from django.db.models.aggregates import Count
+from django.db.models.query import QuerySet
 from django.utils.html import format_html, urlencode
+from django.urls import reverse
 from . import models
 
 class InventoryFilter(admin.SimpleListFilter):
@@ -28,14 +29,15 @@ class ProductAdmin(admin.ModelAdmin):
     # readonly_fields = ['title']
 
     autocomplete_fields =['collection']
-    actions = ['clear_inventory']
     # inlines = [TagInline]
-    search_fields = ['title']
+    
     prepopulated_fields = {
         'slug': ['title'],
     }
+    actions = ['clear_inventory']
     
-    list_display = ['title', 'unit_price', 'inventory_status', 'collection_title']
+    list_display = ['title', 'unit_price',
+     'inventory_status', 'collection_title']
  
     #     prepopulated_fields = {
     #     'price': ['starting_price'],
@@ -44,6 +46,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['collection', 'last_update', InventoryFilter]
     list_per_page = 10
     list_select_related = ['collection']
+    search_fields = ['title']
 
     def collection_title(self, product):
         return product.collection.title
@@ -99,7 +102,8 @@ class CollectionAdmin(admin.ModelAdmin):
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'membership']
     list_editable = ['membership']
-    ordering = ['first_name', 'last_name']
+    list_select_related = ['user']
+    ordering = ['user__first_name', 'user__last_name']
     search_fields = ['first_name__istartswith', 'last_name__istartswith']
     list_per_page = 10
     
@@ -108,8 +112,10 @@ class CustomerAdmin(admin.ModelAdmin):
     #     return orderitem.order
 class OrderItemInline(admin.TabularInline):
     autocomplete_fields = ['product']
+    # min_num = 1
+    # max_num = 10
     model = models.OrderItem
-    
+    # extra = 0
 
 
 @admin.register(models.Order)

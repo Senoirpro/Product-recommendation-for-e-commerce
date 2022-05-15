@@ -7,7 +7,7 @@ from django.forms import fields
 class Tag(models.Model):
     label = models.CharField(max_length=255)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.label
 
 
@@ -19,6 +19,11 @@ class TaggedItem(models.Model):
 
     # type (product, video, article)
     # id
+    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    # object_id = models.PositiveSmallIntegerField()
+    # content_object = GenericForeignKey()
+    # objects = TaggedItemManager()
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, default='')
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveSmallIntegerField()
+    object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey()
