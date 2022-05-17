@@ -1,6 +1,7 @@
 # Product-recommendation-for-e-commerce
 ## Frontend 
-      - React
+      - GET request
+      - POST request
 ## Backend 
       - Django
       - Building rest-api
