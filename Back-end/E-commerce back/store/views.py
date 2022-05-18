@@ -12,8 +12,8 @@ from rest_framework.permissions import AllowAny, DjangoModelPermissions, DjangoM
 from store.permissions import FullDjangoModelPermissions, IsAdminOrReadOnly, ViewCustomerHistoryPermission
 from .pagination import DefaultPagination
 from .filters import ProductFilter
-from .models import Cart, CartItem, Collection, Customer, Order, Product, ProductImage, Review
-from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
+from .models import Cart, CartItem, Collection, Customer, Order, Product, ProductImage, Recommend, Review
+from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, RecommendSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
 # from store import serializers
 
 
@@ -114,6 +114,15 @@ class ReviewViewSet(ModelViewSet):
     def get_serializer_context(self):
         return {'product_id': self.kwargs['product_pk']}
 
+
+class RecommendViewSet(ModelViewSet):
+    serializer_class = RecommendSerializer
+
+    def get_queryset(self):
+        return Recommend.objects.filter(product_id=self.kwargs['product_pk'])
+
+    def get_serializer_context(self):
+        return {'product_id': self.kwargs['product_pk']}
 
 class CartViewSet(CreateModelMixin,
                     RetrieveModelMixin,

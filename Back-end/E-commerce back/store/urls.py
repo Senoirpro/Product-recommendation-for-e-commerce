@@ -18,6 +18,8 @@ carts_router.register('items', views.CartItemViewSet, basename='cart-items')
 products_router.register(
     'reviews', views.ReviewViewSet, basename='product-reviews')
 products_router.register(
+    'recommends', views.RecommendViewSet, basename='product-recommends')
+products_router.register(
     'images', views.ProductImageViewSet, basename='product-images')
 
 

@@ -1,7 +1,7 @@
 from dataclasses import field, fields
 from decimal import Decimal
 from django.db import transaction
-from store.models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, ProductImage, Review
+from store.models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, ProductImage, Recommend, Review
 from .signals import order_created
 from rest_framework import serializers
 
@@ -75,6 +75,35 @@ class ReviewSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         product_id = self.context['product_id']
         return Review.objects.create(product_id=product_id, **validated_data)
+
+
+class RecommendSerializer(serializers.ModelSerializer):
+    product_recommended = serializers.SerializerMethodField()
+    class Meta:
+        model = Recommend
+        fields = [ 'id', 'product_recommended']
+    
+    def create(self, validated_data):
+        product_id = self.context['product_id']
+        return Recommend.objects.create(product_id=product_id, **validated_data)
+
+    def get_product_recommended(self, recommend):
+        le = ['accessories.umbrella',
+             'apparel.belt',
+             'apparel.dress',
+             'apparel.jeans',
+             'apparel.scarf',
+             ]
+
+        def Convert(lst):
+            res_dct = {lst[i]: lst[i + 1] for i in range(0, len(lst), 2)}
+            return res_dct
+        # print(Convert(le))
+
+        for i in le:
+            # x = le.split('.')
+            return(le)
+
 
 
 class SimpleProductSerializer(serializers.ModelSerializer):
