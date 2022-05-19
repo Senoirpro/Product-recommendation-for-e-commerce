@@ -1,11 +1,32 @@
 
+const getProductImages = async(id='')=>{
+    var result = null
+    await axios.get(`http://127.0.0.1:8000/store/products/${id}/images/`)
+    .then(res=>{
+        result = res.data
+    }).catch(err=>console.log(err))
+    return result
+}
 
 const getProducts = async (url = 'http://127.0.0.1:8000/store/products/') =>{
     
     var result = null
     await axios.get(`${url}`)
-    .then(res=>{
-        result = res.data
+    .then(async res=>{
+        const list = await Promise.all(res.data.results.map(async item=>{
+            return {
+                ...item,
+                images: await getProductImages(item.id)
+            }
+        })).then(res=>{
+            return res
+        })
+        
+        result = {
+            ...res.data,
+            results: list
+        }
+
     }).catch(err=>console.log(err))
     return result
 }
@@ -23,20 +44,15 @@ const getCollections = async (url = 'http://127.0.0.1:8000/store/collections/') 
 const getProductDetail = async(id='')=>{
     var result = null
     await axios.get(`http://127.0.0.1:8000/store/products/${id}/`)
-    .then(res=>{
-        result = res.data
+    .then(async res=>{
+        result = {
+            ...res.data,
+            images:await getProductImages(res.data.id)
+        }
     }).catch(err=>console.log(err))
     return result
 }
 
-const getProductImages = async(id='')=>{
-    var result = null
-    await axios.get(`http://127.0.0.1:8000/store/products/${id}/images/`)
-    .then(res=>{
-        result = res.data
-    }).catch(err=>console.log(err))
-    return result
-}
 
 const getProductReviews = async(id='')=>{
     
@@ -48,12 +64,28 @@ const getProductReviews = async(id='')=>{
     return result
 }
 
-const getRecommendedList = async () =>{
-    const list = []
+const getRecommendedList = async (id) =>{
+    var result = null
+    await axios.get(`http://127.0.0.1:8000/store/products/${id}/recommends/`)
+    .then(res=>{
+        result = res.data.map(async item=>{
+                const product = {
+                    ...item,
+                    images: await getProductImages(item.id)
+                }
+                return product
+            })
+    }).catch(err=>console.log(err))
+
+    if(result.length>0)
+        return result
+
+    result = []
+    const list = await getProducts()
     for(var i=0;i<6;i++){
-        let num =Math.floor(Math.random() * 1000)+1
-        if(list.length===0 || !list.find(item=>item && item.id===num)){
-            list.push(await getProductDetail(num))
+        let num =Math.floor(Math.random() * list.count)+1
+        if(result.length===0 || !result.find(item=>item && item.id===num)){
+            result.push(await getProductDetail(num))
         }
         else{
             i--;
@@ -61,7 +93,7 @@ const getRecommendedList = async () =>{
         }
 
     }
-    return list
+    return result
 }
 
 const createUser = (user) =>{

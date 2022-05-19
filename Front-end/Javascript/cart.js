@@ -42,6 +42,7 @@ $(document).ready(function(){
                         return $("<div class='cart-item'></div>").html(
                             function(){
                                 const content = []
+                                const {images} = item
                                 content.push($("<div class='cart-item-title'>").html([
                                     $("<button class='delete-item'></button>").html("X").click(
                                         function(){
@@ -51,7 +52,7 @@ $(document).ready(function(){
 
                                         }
                                     ),
-                                    `<div><img src="${item.image||"Image/cartPlaceholder.png"}"/></div>
+                                    `<div><img src="${images&& images.length>0?image||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}"/></div>
                                     <h3>${item.product.title}</h3>`
                                 ]))
                                 content.push($("<h4 class='cart-item-unit'></h4>").html(`Br. ${item.product.unit_price}`))

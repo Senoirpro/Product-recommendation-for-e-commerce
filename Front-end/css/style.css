@@ -298,8 +298,16 @@ h4.zero:before {
   width: 80%;
 }
 
+.product-details .recommended-list {
+  display: none;
+}
+
+.product-details .recommended-list.show {
+  display: flex;
+}
+
 .product-item-detail {
-  width: 400px;
+  width: 50%;
 }
 
 .product-item-detail .item-detail .name-price {
@@ -309,9 +317,24 @@ h4.zero:before {
 }
 
 .product-item-detail .img-box img {
-  height: 400px;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
+
+.product-item-detail .image-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.product-item-detail .img-item {
+  width: 15%;
+  height: auto;
+  margin: 10px;
+}
+
 
 .review-container {
   width: 50%;

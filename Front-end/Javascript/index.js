@@ -1,17 +1,17 @@
 $(document).ready(async function(){
     
 
-    const renderProducts = (products)=>{
+    const renderProducts =  (products)=>{
         if(products.results.length>0){
             $('.product-item-list').html(
-                function(){
+                 function(){
                     const {results} = products
-                    const list = results.map(item=>{
-                        // const image = await getProductImages(item.id)
+                    const list = results.map(  item=>{
+                        let images = item.images
                         const productItem =  $("<div class='product-item column'></div>").append(()=>{
                             return $("<div class='details'></div>").html(
                                 `<div class="img-box">
-                                <img src="${item.image||"Image/cartPlaceholder.png"}">
+                                <img src="${images && images.length>0?images[0]||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
                                 </div>
             
                                 <h3>${item.title}</h3>
@@ -87,10 +87,11 @@ $(document).ready(async function(){
         $("div.recommended-list ").html(
             function(){
                 const content = list.map(item=>{
+                    let images = item.images
                     const productItem =  $("<div class='product-item column'></div>").append(()=>{
                         return $("<div class='details'></div>").html(
                             `<div class="img-box">
-                            <img src="${item.image||"Image/cartPlaceholder.png"}">
+                            <img src="${images && images.length>0?images[0]||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
                             </div>
         
                             <h3>${item.title}</h3>
@@ -132,7 +133,7 @@ $(document).ready(async function(){
     
 
 
-    renderRecommended(await getRecommendedList())
+    renderRecommended(await getRecommendedList(1))
     renderProducts(await getProducts())
     
     
