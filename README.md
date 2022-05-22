@@ -1,11 +1,15 @@
 # Product-recommendation-for-e-commerce
 ## Frontend 
       - GET request
-      	- Product list
-	- Product detail
-	- login 
-	- register
-	- recommended list
+      	>
+	> Product list
+	> Product detail
+	>
+	> login
+	>
+	> register
+	>
+	> recommended list
       - POST request
 ## Backend 
       - Django
