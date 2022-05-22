@@ -105,7 +105,6 @@ p {
   text-align: center;
 
   width: 470px;
-  height: 550px;
   background-color: #f5ffff;
   top: 57%;
   left: 70%;
@@ -316,13 +315,14 @@ h4.zero:before {
   justify-content: space-between;
 }
 
-.product-item-detail .img-box img {
+.product-item-detail .img-box .img-main {
   height: auto;
   width: 100%;
 }
 
 .product-item-detail .image-list {
   width: 100%;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -330,8 +330,8 @@ h4.zero:before {
 }
 
 .product-item-detail .img-item {
-  width: 15%;
-  height: auto;
+  width: auto;
+  height: 200px;
   margin: 10px;
 }
 

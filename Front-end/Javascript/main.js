@@ -49,7 +49,8 @@ const addToCart = (item)=>{
 		const product = {
 			id:item.id,
 			title:item.title,
-			unit_price:item.unit_price
+			unit_price:item.unit_price,
+			image:item.images &&item.images[0]?item.images[0].image:''
 		}
 		cart.push({
 			product:product,
@@ -68,7 +69,8 @@ const addToCart = (item)=>{
 			const product = {
 				id:item.id,
 				title:item.title,
-				unit_price:item.unit_price
+				unit_price:item.unit_price,
+				image:item.images &&item.images[0]?item.images[0].image:''
 			}
 			cart.push({
 				product:product,

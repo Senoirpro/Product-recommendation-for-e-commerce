@@ -45,7 +45,7 @@ $(document).ready(async function(){
                         const productItem =  $("<div class='product-item column'></div>").append(()=>{
                             return $("<div class='details'></div>").html(
                                 `<div class="img-box">
-                                <img src="${images && images.length>0?images[0]||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
+                                <img src="${images && images.length>0&& images[0]?images[0].image||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
                                 </div>
             
                                 <h3>${item.title}</h3>
@@ -99,14 +99,14 @@ $(document).ready(async function(){
                 const content = []
                 const {images} = product
                 content.push($("<div class='img-box'></div>").html(`
-                <img class='img-main' src=${images&& images.length>0?images[0]||'Image/cartPlaceholder.png':'Image/cartPlaceholder.png'}>
+                <img class='img-main' src="${images&& images.length>0 && images[0]?images[0].image||'Image/cartPlaceholder.png':'Image/cartPlaceholder.png'}">
                 `).append(
                     function(){
                         const list =[]
                         if(images.length>1){
                             images.forEach((item,idx)=>{
                                 if(idx>0){
-                                    list.push($(`<img class='img-item' src='${item||'Image/cartPlaceholder.png'}'/>`))
+                                    list.push($(`<img class='img-item' src='${item?item.image||'Image/cartPlaceholder.png':'Image/cartPlaceholder.png'}'/>`))
                                 }
                             })
                         }

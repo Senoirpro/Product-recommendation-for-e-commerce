@@ -11,7 +11,7 @@ $(document).ready(async function(){
                         const productItem =  $("<div class='product-item column'></div>").append(()=>{
                             return $("<div class='details'></div>").html(
                                 `<div class="img-box">
-                                <img src="${images && images.length>0?images[0]||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
+                                <img src="${images && images.length>0&& images[0]?images[0].image||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
                                 </div>
             
                                 <h3>${item.title}</h3>
@@ -57,7 +57,7 @@ $(document).ready(async function(){
                     page = parseInt(products.next.substr(products.next.indexOf('page=')+5,(products.next.length - products.next.indexOf('page='))))-1
                 }
                 else if(products.previous){
-                    page = parseInt(products.previous.substr(products.previous.indexOf('page=')+5,(products.previous.length - products.previous.indexOf('page='))))-1
+                    page = parseInt(products.previous.substr(products.previous.indexOf('page=')+5,(products.previous.length - products.previous.indexOf('page='))))+1
                 }
                 if(products.previous){
                     
@@ -91,7 +91,7 @@ $(document).ready(async function(){
                     const productItem =  $("<div class='product-item column'></div>").append(()=>{
                         return $("<div class='details'></div>").html(
                             `<div class="img-box">
-                            <img src="${images && images.length>0?images[0]||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
+                            <img src="${images && images.length>0&& images[0]?images[0].image||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
                             </div>
         
                             <h3>${item.title}</h3>
