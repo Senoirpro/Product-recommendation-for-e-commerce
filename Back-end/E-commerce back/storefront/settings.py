@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'djoser',
+    'silk',
     'plays',
     'debug_toolbar',
     'store',
@@ -64,9 +65,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware', 
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'silk.middleware.SilkyMiddleware',
 ]
 
-
+if DEBUG:
+     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
 
 # def show_toolbar(request):
 #     return True
