@@ -4,6 +4,7 @@ from django.db import transaction
 from store.models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, ProductImage, Recommend, Review
 from .signals import order_created
 from rest_framework import serializers
+from store.trained_model import RecommendationList
 
 class CollectionSerializer(serializers.ModelSerializer):
     # id = serializers.IntegerField()
@@ -79,30 +80,44 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class RecommendSerializer(serializers.ModelSerializer):
     product_recommended = serializers.SerializerMethodField()
+    pro_name = serializers.CharField(source='product.title')
+
     class Meta:
         model = Recommend
-        fields = [ 'id', 'product_recommended']
+        fields = [ 'id', 'product_recommended', 'pro_name']
     
     def create(self, validated_data):
         product_id = self.context['product_id']
         return Recommend.objects.create(product_id=product_id, **validated_data)
 
     def get_product_recommended(self, recommend):
-        le = ['accessories.umbrella',
-             'apparel.belt',
-             'apparel.dress',
-             'apparel.jeans',
-             'apparel.scarf',
-             ]
-
+       
+        # print(RecommendationList.Recommend[0:10])
+        # le = ['accessories.umbrella',
+        #      'apparel.belt',
+        #      'apparel.dress',
+        #      'apparel.jeans',
+        #      'apparel.scarf',
+        #      ]
+        # le = list(RecommendationList.Recommend[0:10])
+        l = list(RecommendationList.Recom('apparel.belt'))
+        # print(list(RecommendationList.Recom('apparel.belt')))
+        # print(RecommendSerializer.pro_name.get_value)
+        RecommendSerializer.pro_name.data['pro_name']
+        
+        # print(pro_name)
         def Convert(lst):
             res_dct = {lst[i]: lst[i + 1] for i in range(0, len(lst), 2)}
             return res_dct
         # print(Convert(le))
 
-        for i in le:
+        # for i in le:
+        #     # x = le.split('.')
+        #     return(le)
+        
+        for i in l:
             # x = le.split('.')
-            return(le)
+            return(l)
 
 
 
