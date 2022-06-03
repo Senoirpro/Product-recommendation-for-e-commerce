@@ -1,5 +1,6 @@
 from dataclasses import field, fields
 from decimal import Decimal
+from unicodedata import name
 from django.db import transaction
 from store.models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, ProductImage, Recommend, Review
 from .signals import order_created
@@ -80,18 +81,26 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class RecommendSerializer(serializers.ModelSerializer):
     product_recommended = serializers.SerializerMethodField()
-    pro_name = serializers.CharField(source='product.title')
+    # pro_name = serializers.CharField(source='product.title')
+    # days_since_joined = serializers.SerializerMethodField()
+    # print(pro_name.to_internal_value('title'))
+    # i = pro_name.get_value['title']
+    # print(i)
 
     class Meta:
         model = Recommend
-        fields = [ 'id', 'product_recommended', 'pro_name']
+        fields = [ 'id', 'product_recommended']
     
     def create(self, validated_data):
         product_id = self.context['product_id']
         return Recommend.objects.create(product_id=product_id, **validated_data)
+    
 
-    def get_product_recommended(self, recommend):
-       
+
+    def get_product_recommended(self, obj):
+        i = (obj.product).collection
+        print(i)
+        # obj.
         # print(RecommendationList.Recommend[0:10])
         # le = ['accessories.umbrella',
         #      'apparel.belt',
@@ -100,10 +109,13 @@ class RecommendSerializer(serializers.ModelSerializer):
         #      'apparel.scarf',
         #      ]
         # le = list(RecommendationList.Recommend[0:10])
+
         l = list(RecommendationList.Recom('apparel.belt'))
         # print(list(RecommendationList.Recom('apparel.belt')))
         # print(RecommendSerializer.pro_name.get_value)
-        RecommendSerializer.pro_name.data['pro_name']
+        # RecommendSerializer.pro_name.get_value['']
+        # RecommendSerializer.get_field_names['pro_name']
+        # RecommendSerializer.pro_name.field_name['']
         
         # print(pro_name)
         def Convert(lst):

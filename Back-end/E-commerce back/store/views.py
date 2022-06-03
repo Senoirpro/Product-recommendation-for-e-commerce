@@ -117,7 +117,7 @@ class ReviewViewSet(ModelViewSet):
 
 class RecommendViewSet(ModelViewSet):
     serializer_class = RecommendSerializer
-
+    
     def get_queryset(self):
         return Recommend.objects.filter(product_id=self.kwargs['product_pk'])
 
