@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -9,18 +8,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <div class="all">
         <div class="navbar">
             <div>
-
                 <a href="index.html"> <img src="Image/mainlogo.png" width="120px"></a>
             </div>
-
             <nav>
                 <ul>
-                    <li> <input type="text" placeholder="Search..."> <img src="Image/search.png" width="10px"></li>
+                    <li>
+                        <!-- <form method="get" action="http://127.0.0.1:8000/store/products/?search"> -->
+                        <input id="searchbar" onclick="search()" type="text" name="search" placeholder="Search..">
+                        <!-- </form> -->
+                        <img src="Image/search.png" width="10px">
+                    </li>
                     <li> <a href="about.html"> About us </a> </li>
                     <li> <a href="contactus.html"> Contact us </a> </li>
                     <li><a href="Login.html"><img src="Image/login.png" width="18px"></a></li>
@@ -32,9 +33,6 @@
                 </ul>
             </nav>
         </div>
-
-
-
         <div class="parent">
             <div class="product">
                 <h2>
@@ -52,66 +50,17 @@
                     <a href="" class="collection-item active">Most sold</a> <br>
                     <a href="" class="collection-item "> Sport</a><br> -->
                 </div>
-
-                <br>
-                <H3>Rating</H3>
-
-                <div class="rating">
-                    <input type="checkbox">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div><br>
-
-
-                <div class="rating">
-                    <input type="checkbox">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div><br>
-
-                <div class="rating">
-                    <input type="checkbox">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div><br>
-
-                <div class="rating">
-                    <input type="checkbox">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div><br>
-
-                <div class="rating">
-                    <input type="checkbox">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div><br>
             </div>
 
 
-            <div class="product-container">
-                <h2>All products | Most sold</h2>
+            <div  class="product-container">
+                <h2>All products  </h2>
                 <div>
-                    <h2>Recommended Products</h2>
+                    <h2 id = "makenone"></h2>
                     <div class="recommended-list row"></div>
                     <hr>
                 </div>
-                <div class="product-item-list row">
+                <div id="recomands" class="product-item-list row">
 
 
 
@@ -136,6 +85,8 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
 
+    <script src='javascript/searcher.js'></script>
+    <script src='javascript/catagory.js'></script>
     <script src="javascript/jquery-3.6.0.js"></script>
     <script src="Javascript/axios.min.js"></script>
     <script src="javascript/http.js"></script>
@@ -160,8 +111,6 @@
                 <h6> Copyright BSBS 2021-2022</h6>
             </center>
         </div>
-
     </div>
 </footer>
-
 </html>

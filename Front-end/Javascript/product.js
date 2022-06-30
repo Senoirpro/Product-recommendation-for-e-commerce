@@ -1,24 +1,24 @@
-$(document).ready(async function(){
+$(document).ready(async function () {
 
 
     var sPageURL = window.location.search.substring(1)
     var sURLVariables = sPageURL.split('&')
     var sParameterName
     var productID
-    
+
     for (var i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');
-    
+
         if (sParameterName[0] === 'id') {
             productID = sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
         }
     }
 
-    const renderReviews = (list)=>{
-        if(list.length===0) return
+    const renderReviews = (list) => {
+        if (list.length === 0) return
         $('div.review-list').html(
-            function(){
-                return list.map(item=>{
+            function () {
+                return list.map(item => {
                     return $("<div class='review-item'></div>").html(`
                         <div class='name-date'>
                             <h4 class='review-name'>${item.name}</h4>
@@ -31,21 +31,21 @@ $(document).ready(async function(){
         )
     }
 
-    const renderRecommended = (list)=>{
-        if(list && list.length >0){
-            if(!$("div.recommended-list").hasClass('show'))
+    const renderRecommended = (list) => {
+        if (list && list.length > 0) {
+            if (!$("div.recommended-list").hasClass('show'))
                 $("div.recommended-list ").toggleClass('show')
-            
+
             console.log($("div.recommended-list").hasClass('show'))
 
             $("div.recommended-list ").html(
-                function(){
-                    const content = list.map(item=>{
-                        let {images} = item
-                        const productItem =  $("<div class='product-item column'></div>").append(()=>{
+                function () {
+                    const content = list.map(item => {
+                        let { images } = item
+                        const productItem = $("<div class='product-item column'></div>").append(() => {
                             return $("<div class='details'></div>").html(
                                 `<div class="img-box">
-                                <img src="${images && images.length>0&& images[0]?images[0].image||"Image/cartPlaceholder.png":"Image/cartPlaceholder.png"}">
+                                <img src="${images && images.length > 0 && images[0] ? images[0].image || "Image/cartPlaceholder.png" : "Image/cartPlaceholder.png"}">
                                 </div>
             
                                 <h3>${item.title}</h3>
@@ -58,55 +58,55 @@ $(document).ready(async function(){
                                     <i class="fa fa-star-o"></i>
                                 </div>
                                 `
-                            ).append(()=>{
+                            ).append(() => {
                                 return $("<button class='cart'></button>").html(
                                     `Add to cart
                                     <img src="Image/cart.png">`
-                                    ).click(
-                                        function(event){
-                                            event.stopPropagation();
-                                            addToCart(item)
-                                        }
-                                    )
+                                ).click(
+                                    function (event) {
+                                        event.stopPropagation();
+                                        addToCart(item)
+                                    }
+                                )
                             })
                         }).click(
-                            function(){
-                                window.location.href=window.location.origin+'/Front-end/productdetail.html?id='+item.id
-    
+                            function () {
+                                window.location.href = window.location.origin + '/Front-end/productdetail.html?id=' + item.id
+
                             }
                         )
                         return productItem
                     })
-                    return [$("<h2>Recommended Products</h2>"),...content,$("<hr>")]
+                    return [$("<h2>Recommended Products</h2>"), ...content, $("<hr>")]
                 }
             )
         }
-        else{
-            if($("div.recommended-list ").hasClass('show'))
+        else {
+            if ($("div.recommended-list ").hasClass('show'))
                 $("div.recommended-list ").toggleClass('show')
         }
     }
 
-    const renderDetails = async (product)=>{
-        
-        if(!product){
-            window.location.href = window.location.origin+'/Front-end/index.html'
+    const renderDetails = async (product) => {
+
+        if (!product) {
+            window.location.href = window.location.origin + '/Front-end/index.html'
         }
 
         // const image = await getProductImages(product.id)
         $('div.product-details div.product-item-detail').html(
-            function(){
+            function () {
                 const content = []
-                const {images} = product
+                const { images } = product
                 content.push($("<div class='img-box'></div>").html(`
-                <img class='img-main' src="${images&& images.length>0 && images[0]?images[0].image||'Image/cartPlaceholder.png':'Image/cartPlaceholder.png'}">
+                <img class='img-main' src="${images && images.length > 0 && images[0] ? images[0].image || 'Image/cartPlaceholder.png' : 'Image/cartPlaceholder.png'}">
                 `).append(
-                    function(){
-                        const list =[]
-                        if(images.length>1){
-                            images.forEach((item,idx)=>{
-                                if(idx>0){
-                                    list.push($(`<img class='img-item' src='${item?item.image||'Image/cartPlaceholder.png':'Image/cartPlaceholder.png'}'/>`))
+                    function () {
+                        const list = []
+                        if (images.length > 1) {
+                            images.forEach((item, idx) => {
+                                if (idx > 0) {
+                                    list.push($(`<img class='img-item' src='${item ? item.image || 'Image/cartPlaceholder.png' : 'Image/cartPlaceholder.png'}'/>`))
                                 }
                             })
                         }
@@ -124,27 +124,27 @@ $(document).ready(async function(){
                 content.push($("<button class='cart details-cart'></button>").html(`
                     Add to cart
                     <img src="Image/cart.png">
-                `).click(function(){
-                    
+                `).click(function () {
+
                     addToCart(product)
                 }))
                 return content
             }
         )
-        renderRecommended(await getRecommendedList(product.id))
+        renderRecommended(await getProductsByCollection(product.collection))
         renderReviews(await getProductReviews(product.id))
-        
+
     }
 
 
-    
-    
 
-    if(productID){
+
+
+    if (productID) {
         renderDetails(await getProductDetail(productID))
     }
-    else{
-        window.location.href = window.location.origin+'/Front-end/index.html'
+    else {
+        window.location.href = window.location.origin + '/Front-end/index.html'
     }
-    
+
 })

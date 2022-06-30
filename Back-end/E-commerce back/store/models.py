@@ -51,7 +51,8 @@ class Product(models.Model):
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name='products')
     # if collection deleted but not product
     promotions = models.ManyToManyField(Promotion, blank=True)
-
+    c_code  = models.CharField(max_length=255, default='__')
+    
     def __str__(self) -> str:
         return self.title
 

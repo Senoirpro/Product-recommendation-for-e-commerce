@@ -33,7 +33,6 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ['id', 'title', 'description', 'slug', 'inventory', 'unit_price', 'price_with_tax', 'collection', 'images']
         # fields = '__all__' not use may be senitivty
-
     # # only insenitive fields
     # id = serializers.IntegerField()
     # title = serializers.CharField(max_length=255)

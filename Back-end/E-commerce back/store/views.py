@@ -24,7 +24,7 @@ class ProductViewSet(ModelViewSet):
     filterset_class = ProductFilter 
     pagination_class = DefaultPagination
     permission_classes = [IsAdminOrReadOnly]
-    search_fields = ['title', 'description']
+    search_fields = ['title']
     ordering_fields = ['unit_price', 'last_update']
     # filterset_fields = ['collection_id', 'unit_price']
     # def get_queryset(self):
@@ -87,6 +87,10 @@ class ProductViewSet(ModelViewSet):
     #     serializer.is_valid(raise_exception=True)
     #     serializer.save()
     #     return Response(serializer.data)
+
+
+
+
 
 class CollectionViewSet(ModelViewSet):
     queryset = Collection.objects.annotate(

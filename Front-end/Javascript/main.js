@@ -95,10 +95,10 @@ const addToCart = (item)=>{
 					function(){
 						const list = collections.map(item=>{
 							// if(item.products_count > 0)
-							return $("<a href='' class='collection-item'></a><br>").html(`${item.title}`)
+							return $(`<a href='http://127.0.0.1:8000/store/products/?collection_id=${item.id}' onclick=catagorize(${item.id}); class='collection-item'></a><br>`).html(`${item.title}`)
 	
 						})
-						list.push($("<a href='' class='collection-item active'></a>").html(`${"Most Sold"}`))
+						// list.push($("<a href='' class='collection-item active'></a>").html(`${""}`))
 						return list
 					}
 				)

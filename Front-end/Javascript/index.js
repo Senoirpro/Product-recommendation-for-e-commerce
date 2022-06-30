@@ -133,7 +133,7 @@ $(document).ready(async function(){
     
 
 
-    renderRecommended(await getRecommendedList(1))
+    // renderRecommended(await getRecommendedList(1))
     renderProducts(await getProducts())
     
     
